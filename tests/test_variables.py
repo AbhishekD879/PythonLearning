@@ -25,7 +25,7 @@ def test_adjust_recipe():
     assert adjust_recipe(2, 8) == 4.0
     assert adjust_recipe(0, 5) == 0.0
     assert adjust_recipe(1, 1) == 2.0
-    # Add more test cases as neede
+    # Add more test cases as needed
 
 
 # Test cases for total_cost function
