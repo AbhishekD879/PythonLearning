@@ -41,4 +41,4 @@ def test_calculate_profit():
     assert calculate_profit(1500, 1200) == 300
     assert calculate_profit(0, 0) == 0
     assert calculate_profit(100, 200) == -100
-    # Add more test cases as needed
+    # Add more test cases as neede
