@@ -1,8 +1,10 @@
 import xml.etree.ElementTree as ET
 import os
+from tabulate import tabulate
 
 
 def update_readme_with_scores(test_results_file, readme_file):
+    # Initialize the README file if it doesn't exist
     if not os.path.exists(readme_file):
         with open(readme_file, 'w') as file:
             file.write("# Assignment Scores\n\n")
@@ -50,7 +52,8 @@ def update_readme_with_scores(test_results_file, readme_file):
             if not score_section:
                 file.write(line)
 
-        # Iterate over test cases and extract detailed test results
+        # Gather test case results
+        test_results = []
         for testcase in testsuite.findall('testcase'):
             test_name = testcase.attrib['name']
             test_status = "Passed"
@@ -64,7 +67,12 @@ def update_readme_with_scores(test_results_file, readme_file):
                 test_status = "Error"
                 assertion = error_elem.text.strip().replace("\n", " ").replace("  ", " ")
 
-            file.write(f'| {test_name:<25} | {test_status:<6} | {assertion} |\n')
+            test_results.append([test_name, test_status, assertion])
+
+        # Use tabulate to format the test results table
+        table = tabulate(test_results, headers=["Test Name", "Status", "Assertion"], tablefmt="pipe")
+        file.write(table)
+        file.write("\n")
 
 
 if __name__ == "__main__":
