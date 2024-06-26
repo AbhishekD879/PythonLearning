@@ -59,10 +59,10 @@ def update_readme_with_scores(test_results_file, readme_file):
             error_elem = testcase.find('error')
             if failure_elem is not None:
                 test_status = "Failed"
-                assertion = failure_elem.text.strip()
+                assertion = failure_elem.text.strip().replace("\n", " ").replace("  ", " ")
             elif error_elem is not None:
                 test_status = "Error"
-                assertion = error_elem.text.strip()
+                assertion = error_elem.text.strip().replace("\n", " ").replace("  ", " ")
 
             file.write(f'| {test_name:<25} | {test_status:<6} | {assertion} |\n')
 
