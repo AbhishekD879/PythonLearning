@@ -17,7 +17,7 @@ def test_distribute_candies():
     assert distribute_candies(25, 4) == (6, 1)
     assert distribute_candies(100, 5) == (20, 0)
     assert distribute_candies(10, 3) == (3, 1)
-    # Add more test cases as neede
+    # Add more test cases as needed
 
 
 # Test cases for adjust_recipe function
